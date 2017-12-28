@@ -1,0 +1,6 @@
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/bin/Debug/FirstGenAlg.exe
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/bin/Debug/FirstGenAlg.pdb
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/obj/Debug/FirstGenAlg.csprojResolveAssemblyReference.cache
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/obj/Debug/FirstGenAlg.csproj.CoreCompileInputs.cache
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/obj/Debug/FirstGenAlg.exe
+/Users/sepp/RiderProjects/FirstGenAlg/FirstGenAlg/obj/Debug/FirstGenAlg.pdb
