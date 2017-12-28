@@ -71,19 +71,45 @@ namespace FirstGenAlg
         {
             var targetlen = target.Length;
             var fitness = targetlen;
+            
             //var minlen = Math.Min(target.Length, GeneA.Length);
             // Aufhoeren wenn klar ist, dass kein besserer erreicht werden kann ???
             for (var i = 0; i < targetlen; i++)
             {
-                //var t = target[i];
-                //var g = GeneA[i];
                 if (target[i] != geneA[i]) continue;
                 fitness--;
-                //colorBools[i] = true;
             }
 
-            //fitness = GeneA.Intersect(target);
             return fitness;
+
+        }
+
+        internal static void CalculateFitness(char[] target, StringDna parStringDna)
+        {
+            var targetlen = target.Length;
+            var fitness = targetlen;
+            var fitnessMother = targetlen;
+            var fitnessFather = targetlen;
+            
+            //var minlen = Math.Min(target.Length, GeneA.Length);
+            // Aufhoeren wenn klar ist, dass kein besserer erreicht werden kann ???
+            for (var i = 0; i < targetlen; i++)
+            {
+                if (target[i] != parStringDna.GeneA[i]) continue;
+                fitness--;
+                if (i > targetlen / 2)
+                {
+                    fitnessFather--;
+                }
+                else
+                {
+                    fitnessMother--;
+                }
+            }
+
+            parStringDna.Fitness = fitness;
+            parStringDna.FitnessMother = fitnessMother;
+            parStringDna.FitnessFather = fitnessFather;
 
         }
     }

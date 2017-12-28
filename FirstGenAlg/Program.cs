@@ -18,8 +18,8 @@ namespace FirstGenAlg
                 "";
 
             var bestgene = "";
-            StringSearch.StringDna(targetstring, ref bestgene, 1000, 1000);
-            StringSearch.StringDna(targetstring, ref bestgene, 1000, 1000);
+            StringSearch.StringDna(targetstring, ref bestgene, 1000, 10000);
+       //     StringSearch.StringDna(targetstring, ref bestgene, 1000, 10000);
             
         }
     }

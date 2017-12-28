@@ -30,7 +30,9 @@ namespace FirstGenAlg
                 Parallel.ForEach(dnaarray, paroptions, (dna) =>
                 //foreach (var dna in dnaarray)
                 {
-                    dna.Fitness = StringDistance.CalculateFitness(targetchar, dna.GeneA);
+                    //dna.Fitness = StringDistance.CalculateFitness(targetchar, dna.GeneA);
+                    StringDistance.CalculateFitness(targetchar, dna);
+                    
                     if (bestfitness <= dna.Fitness) return;
                     bestfitness = dna.Fitness;
                     currentBestGene = new string(dna.GeneA);
@@ -49,10 +51,15 @@ namespace FirstGenAlg
                 );
                 
                 if (finished) break;
-                var sorteddnalist = dnaarray.OrderBy(dna=>dna.Fitness).Take(2).ToList();
-                Parallel.For(size / 2, size, i =>
+                //var sorteddnalist = dnaarray.OrderBy(dna=>dna.Fitness).Take(2).ToList();
+                var sorteddnalistFather = dnaarray.OrderBy(dna=>dna.FitnessFather).Take(1).ToList();
+                var sorteddnalistMother = dnaarray.OrderBy(dna=>dna.FitnessMother).Take(1).ToList();
+                
+                
+                Parallel.For(0, size, i =>
                     {
-                        dnaarray[i] = sorteddnalist[0].CrossOver(sorteddnalist[1], targetlen);
+                    //    dnaarray[i] = sorteddnalist[0].CrossOver(sorteddnalist[1], targetlen);
+                        dnaarray[i] = sorteddnalistMother[0].CrossOver(sorteddnalistFather[0], targetlen);
                     }
                 );
                 if (generation % 1000 == 0)
