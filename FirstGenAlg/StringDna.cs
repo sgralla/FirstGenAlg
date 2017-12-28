@@ -17,7 +17,10 @@ namespace FirstGenAlg
 
         //private static readonly char[] Target = "to be or not to be".ToCharArray();
         //private static readonly char[] Target = "valhalla deliverance have you ever forgotten me ".ToCharArray();
+        //private static readonly char[] Alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".ToCharArray();
         private static readonly char[] Alphabet = "abcdefghijklmnopqrstuvwxyz ".ToCharArray();
+        private static readonly int AlphabetLength = Alphabet.Length;
+        
                                        //abcdefghijklmnopqrstuvwxyz 	
         //internal static int Targetlen = Target.Length;
 
@@ -51,7 +54,7 @@ namespace FirstGenAlg
             {
                 //_gene.Append(Alphabet[Rng.Next(0, 26)]);
             //    GeneA[i] = _alphabet[Rng.Next(0, 26)];
-                genetemp[i] = Alphabet[Rng.Next(0, 26)];
+                genetemp[i] = Alphabet[Rng.Next(0, AlphabetLength - 1)];
             }
             //GeneA =  genetemp.ToString().PadRight(18,'x');
             GeneA = genetemp;
@@ -87,25 +90,29 @@ namespace FirstGenAlg
             var child = new StringDna(temp);
             
             //var child = new StringDna(GeneA.);
-            child.Mutate(Rng.Next(0,26));
+            child.Mutate(Rng.Next(0,AlphabetLength - 1));
+            child.Mutate(Rng.Next(0,AlphabetLength - 1));
             //child.Mutate();
             return child;
         }
-        
-        public static StringDna[] DnaInitialize(int size, int targetlen)
+
+        public static StringDna[] DnaInitialize(int size, int targetlen, string startstring = "")
         {
-            //var rng = new Random();
             var dnaarray = new StringDna[size];
             for (var i = 0; i < size; i++)
             {
-                var tempdna = new StringDna("");
-                tempdna.Initialize(targetlen);
+                var tempdna = new StringDna(startstring);
+                if (string.IsNullOrWhiteSpace(startstring))
+                {
+                    tempdna.Initialize(targetlen);
+                }
                 dnaarray[i] = tempdna;
             }
             return dnaarray;
         }
 
-        internal void Mutate(int mutationrate = 1)
+
+        private void Mutate(int mutationrate = 1)
         {
             var changechar = Rng.Next(0, GeneA.Length);
             //var genechar = GeneA;
